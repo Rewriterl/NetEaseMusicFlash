@@ -12,10 +12,14 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "element-ui": "^2.13.1",
+    "jsencrypt": "^3.0.0-rc.1",
+    "qs": "^6.9.3",
     "request": "^2.88.2",
     "vue": "^2.5.2",
+    "vue-cookies": "^1.7.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

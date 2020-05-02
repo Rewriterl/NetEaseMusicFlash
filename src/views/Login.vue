@@ -5,7 +5,7 @@
       <el-input type="text" v-model="loginForm.username" auto-complete="off" aria-placeholder="请输入用户名"></el-input>
     </el-form-item>
     <el-form-item prop="password">
-      <el-input type="text" v-model="loginForm.password" auto-complete="off" aria-placeholder="请输入密码"
+      <el-input type="password" v-model="loginForm.password" auto-complete="off" aria-placeholder="请输入密码"
                 @keydown.enter.native="submitLogin"></el-input>
     </el-form-item>
     <el-button round type="primary" style="width: 100%;" @click="submitLogin">登录</el-button>
@@ -17,8 +17,8 @@
     data() {
       return {
         loginForm: {
-          username: '',
-          password: ''
+          username: '18641580430',
+          password: '1214624776ava'
         },
         rules: {
           username: [{required: true, message: "请输入用户名", trigger: "blur"}],
@@ -28,19 +28,21 @@
     },
     methods: {
       submitLogin() {
+        123
         this.$refs.loginForm.validate((valid) => {
             if (valid) {
-              alert("全部数据输入")
-              data = [
-                this.loginForm.username, // phone
-                "86",                    // countrycode
-                this.loginForm.password, // password
-                "true"];                 // rememberLogin
-              this.doLogin('https://music.163.com/weapi/login/cellphone', this.loginForm).then(resp => {
-                // if (resp) {
-                //   window.sessionStorage.setItem("user",JSON.stringify(resp.data))
-                //   this.$router.replace('/home')
-                // }
+              let data = JSON.stringify({
+                username: this.loginForm.username,
+                countrycode: "86",
+                password: this.loginForm.password,
+                rememberLogin: "true"
+              })
+              this.postRequest('https://music.163.com/weapi/login/cellphone', data).then(resp => {
+                if (resp) {
+                  console.log(resp)
+                  // window.sessionStorage.setItem("__csrf",JSON.stringify(resp.data))
+                  // this.$router.replace('/home')
+                }
               })
             } else {
               this.$message.error('请输入所有字段')
