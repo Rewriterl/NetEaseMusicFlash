@@ -11,16 +11,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
 
-import {postRequest} from "./utils/api";
-import {getRequest} from "./utils/api";
-import {putRequest} from "./utils/api";
-import {deleteRequest} from "./utils/api";
+import {rush} from "./utils/api";
+import {login} from "./utils/api";
 
 
-Vue.prototype.postRequest = postRequest;
-Vue.prototype.getRequest = getRequest;
-Vue.prototype.putRequest = putRequest;
-Vue.prototype.deleteRequest = deleteRequest;
+Vue.prototype.rush = rush;
+Vue.prototype.login = login;
 /* eslint-disable no-new */
 Vue.use(ElementUI);
 Vue.use(VueCookies);

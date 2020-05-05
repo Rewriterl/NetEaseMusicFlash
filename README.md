@@ -89,9 +89,7 @@ bYf8X.encSecKey rsa加密
 
 ## 然后是登录的时候遇到的问题:
 1.cors问题
+使用nodejs中的request模块
 
 
-刷的音乐来自每日推荐
-```
-/api/discovery/recommend/resource
-```
+刷的音乐来自每日推荐歌单，所以不会污染以后的推荐

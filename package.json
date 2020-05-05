@@ -11,11 +11,15 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "apicache": "^1.5.3",
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "element-ui": "^2.13.1",
+    "express": "^4.17.1",
     "jsencrypt": "^3.0.0-rc.1",
+    "pac-proxy-agent": "^4.1.0",
     "qs": "^6.9.3",
     "request": "^2.88.2",
     "vue": "^2.5.2",
