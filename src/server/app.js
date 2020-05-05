@@ -43,13 +43,14 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(cache('2 minutes', ((req, res) => res.statusCode === 200)))
 
 // static
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'dist\\index.html')))
 
 // router
 const special = {
   'daily_signin.js': '/daily_signin',
   'fm_trash.js': '/fm_trash',
   'personal_fm.js': '/personal_fm',
+  'weblog.js': '/weapi/feedback/weblog'
 }
 
 fs.readdirSync(path.join(__dirname, '')).reverse().forEach(file => {

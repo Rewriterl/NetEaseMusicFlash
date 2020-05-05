@@ -17,6 +17,8 @@
   </div>
 </template>
 <script>
+  import Vue from "vue";
+
   export default {
     name: "Login",
     data() {
@@ -60,8 +62,45 @@
           }
         )
       },
-      submitRush(){
-        this.rush()
+      submitRush() {
+        this.rush().then(value => {
+            // console.log(`推荐歌单列表${value.data.recommend}`)
+            let ids = this.getIdList(value.data.recommend)
+            let message;
+            let usedListId = Vue.prototype.usedListId
+            let ll = usedListId.length;
+            let listId = 0
+            if (ids.length !== ll) {
+              while (usedListId.indexOf(listId) !== -1) {
+                listId = Math.floor((Math.random() * ids.length))
+              }
+              message = `歌单:${ids[listId]}刷完啦`;
+              usedListId.push(listId)
+            } else {
+              message = "今天的所有歌单都已经刷完了哦"
+            }
+            Vue.prototype.usedListId = usedListId
+            console.log(`已经刷的歌单${usedListId}`)
+            this.getSongList(ids[listId]).then(songs => {
+              let len = songs.data.playlist.trackIds.length;
+              // 获取歌单内全部歌曲id
+              for (let j = 0; j < len; j++) {
+                console.log(`歌曲id${songs.data.playlist.trackIds[j].id}当前是第${j}首`)
+                if (j === 310) {
+                  break;
+                }
+              }
+            })
+            this.doRush(34731046).then(value1 => {
+              console.log(value1)
+            })
+            this.$notify({
+              title: '通知',
+              message: message,
+              type: 'success'
+            });
+          }
+        )
       }
     }
   }
