@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const crypto = require('crypto')
-
+// 网易云音乐登录
 export const login = (phone, password) => {
   return axios({
     method: 'post',
@@ -9,8 +9,8 @@ export const login = (phone, password) => {
     withCredentials: true,
   })
 }
+// 拿歌单列表
 export const rush = () => {
-  // 1.拿歌单列表
   return axios({
     method: 'post',
     url: `http://localhost:3000/recommend/resource`,
@@ -34,10 +34,11 @@ export const getSongList = (id) => {
     withCredentials: true,
   })
 }
-export const doRush = (id) => {
+// 刷播放量
+export const doRush = (id, sourceid) => {
   return axios({
     method: 'post',
-    url: `http://localhost:3000/weapi/feedback/weblog?id=${id}`,
+    url: `http://localhost:3000/scrobble?id=${id}&sourceid=${sourceid}&time=240`,
     withCredentials: true,
   })
 }

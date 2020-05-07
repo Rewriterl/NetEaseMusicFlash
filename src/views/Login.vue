@@ -2,11 +2,11 @@
   <div v-if="flag">
     <el-form :rules="rules" ref="loginForm" :model="loginForm" class="loginContainer">
       <h3 class="loginTitle">阿里云账号登录</h3>
-      <el-form-item prop="username">
-        <el-input type="text" v-model="loginForm.phone" auto-complete="off" aria-placeholder="请输入用户名"></el-input>
+      <el-form-item prop="phone">
+        <el-input type="text" v-model="loginForm.phone" auto-complete="off" placeholder="请输入用户名"></el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input type="password" v-model="loginForm.password" auto-complete="off" aria-placeholder="请输入密码"
+        <el-input type="password" v-model="loginForm.password" auto-complete="off" placeholder="请输入密码"
                   @keydown.enter.native="submitLogin"></el-input>
       </el-form-item>
       <el-button round type="primary" style="width: 100%;" @click="submitLogin">登录</el-button>
@@ -14,6 +14,23 @@
   </div>
   <div v-else class="loginContainer" style="text-align: center">
     <el-button type="primary" round @click="submitRush">开始刷播放量</el-button>
+    <div>
+      <el-table
+        :data="tableData"
+        height="250"
+        border
+        style="width: 100%">
+        <el-table-column
+          prop="num"
+          label="已刷"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="id"
+          label="歌曲id">
+        </el-table-column>
+      </el-table>
+    </div>
   </div>
 </template>
 <script>
@@ -23,10 +40,11 @@
     name: "Login",
     data() {
       return {
+        tableData: [],
         flag: true,
         loginForm: {
-          phone: '18641580430',
-          password: '1214624776ava'
+          phone: '',
+          password: ''
         },
         rules: {
           phone: [{required: true, message: "请输入用户名", trigger: "blur"}],
@@ -64,9 +82,11 @@
       },
       submitRush() {
         this.rush().then(value => {
-            // console.log(`推荐歌单列表${value.data.recommend}`)
+            // 推荐专辑列表
             let ids = this.getIdList(value.data.recommend)
+            // 通知
             let message;
+            // 已经刷过的索引
             let usedListId = Vue.prototype.usedListId
             let ll = usedListId.length;
             let listId = 0
@@ -80,19 +100,21 @@
               message = "今天的所有歌单都已经刷完了哦"
             }
             Vue.prototype.usedListId = usedListId
-            console.log(`已经刷的歌单${usedListId}`)
-            this.getSongList(ids[listId]).then(songs => {
+            // 歌单id
+            let sourceid = ids[listId]
+            this.getSongList(sourceid).then(songs => {
               let len = songs.data.playlist.trackIds.length;
               // 获取歌单内全部歌曲id
               for (let j = 0; j < len; j++) {
-                console.log(`歌曲id${songs.data.playlist.trackIds[j].id}当前是第${j}首`)
-                if (j === 310) {
+                this.tableData.push({
+                  num: j,
+                  id: songs.data.playlist.id,
+                })
+                this.doRush(songs.data.playlist.trackIds[j].id, sourceid)
+                if (j === 300) {
                   break;
                 }
               }
-            })
-            this.doRush(34731046).then(value1 => {
-              console.log(value1)
             })
             this.$notify({
               title: '通知',

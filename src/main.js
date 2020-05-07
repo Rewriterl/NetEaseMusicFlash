@@ -20,7 +20,7 @@ Vue.prototype.getIdList = getIdList;
 Vue.prototype.getSongList = getSongList;
 Vue.prototype.doRush = doRush;
 Vue.prototype.usedListId = [];
-/* eslint-disable no-new */
+
 Vue.use(ElementUI);
 Vue.use(VueCookies);
 new Vue({
