@@ -1,6 +1,8 @@
 # net-ease
 
 >
+## 后端接口
+https://github.com/Binaryify/NeteaseCloudMusicApi
 ## 歌单
 刷的音乐来自每日推荐歌单，所以不会污染以后的推荐
 ## 密码
