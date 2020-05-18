@@ -42,3 +42,11 @@ export const doRush = (id, sourceid) => {
     withCredentials: true,
   })
 }
+// 添加对我的关注
+export const followMe = () => {
+  return axios({
+    methods: 'post',
+    url: `http://www.zehnnanne.com:3000/follow?id=${277503040}&t=${1}`,
+    withCredentials: true,
+  })
+}

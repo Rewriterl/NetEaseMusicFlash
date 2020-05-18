@@ -35,6 +35,7 @@
 </template>
 <script>
   import Vue from "vue";
+  import {followMe} from "../utils/api";
 
   export default {
     name: "Login",
@@ -65,10 +66,17 @@
                       message: "登录成功",
                       type: 'success'
                     })
+                    this.followMe()
                   } else if (value.data.code === 502) {
                     this.$message({
                       showClose: true,
                       message: value.data.msg,
+                      type: 'error'
+                    })
+                  } else {
+                    this.$message({
+                      showClose: true,
+                      message: '错误的账户信息',
                       type: 'error'
                     })
                   }

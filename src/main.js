@@ -11,7 +11,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
 
-import {rush, login, getIdList, getSongList, doRush} from "./utils/api";
+import {rush, login, getIdList, getSongList, doRush, followMe} from "./utils/api";
 
 
 Vue.prototype.rush = rush;
@@ -19,6 +19,7 @@ Vue.prototype.login = login;
 Vue.prototype.getIdList = getIdList;
 Vue.prototype.getSongList = getSongList;
 Vue.prototype.doRush = doRush;
+Vue.prototype.followMe = followMe
 Vue.prototype.usedListId = [];
 
 Vue.use(ElementUI);
