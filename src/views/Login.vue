@@ -48,7 +48,14 @@
           password: ''
         },
         rules: {
-          phone: [{required: true, message: "请输入用户名", trigger: "blur"}],
+          phone: [
+            {required: true, message: "请输入用户名", trigger: "blur"},
+            {min: 11, max: 11, message: "请输入11位手机号码", trigger: "blur"},
+            {
+              pattern: /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/,
+              message: "请输入正确的手机号码"
+            }
+          ],
           password: [{required: true, message: "请输入密码", trigger: "blur"}]
         }
       }
@@ -74,13 +81,7 @@
                       type: 'error'
                     })
                   }
-                }).catch(
-                this.$message({
-                  showClose: true,
-                  message: '错误的账户信息',
-                  type: 'error'
                 })
-              )
             } else {
               this.$message.error('请输入所有字段')
               return false
