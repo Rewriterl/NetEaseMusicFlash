@@ -5,7 +5,7 @@ const crypto = require('crypto')
 export const login = (phone, password) => {
   return axios({
     method: 'post',
-    url: `http://localhost:3000/login/cellphone?phone=${phone}&password=${crypto.createHash('md5').update(password).digest('hex')}`,
+    url: `http://www.zehnnanne.com:3000/login/cellphone?phone=${phone}&password=${crypto.createHash('md5').update(password).digest('hex')}`,
     withCredentials: true,
   })
 }
@@ -13,7 +13,7 @@ export const login = (phone, password) => {
 export const rush = () => {
   return axios({
     method: 'post',
-    url: `http://localhost:3000/recommend/resource`,
+    url: `http://www.zehnnanne.com:3000/recommend/resource`,
     withCredentials: true,
   })
 }
@@ -30,7 +30,7 @@ export const getIdList = (value) => {
 export const getSongList = (id) => {
   return axios({
     method: 'post',
-    url: `http://localhost:3000/playlist/detail?id=${id}`,
+    url: `http://www.zehnnanne.com:3000/playlist/detail?id=${id}`,
     withCredentials: true,
   })
 }
@@ -38,7 +38,7 @@ export const getSongList = (id) => {
 export const doRush = (id, sourceid) => {
   return axios({
     method: 'post',
-    url: `http://localhost:3000/scrobble?id=${id}&sourceid=${sourceid}&time=240`,
+    url: `http://www.zehnnanne.com:3000/scrobble?id=${id}&sourceid=${sourceid}&time=240`,
     withCredentials: true,
   })
 }

@@ -15,7 +15,7 @@ app.use((req, res, next) => {
     res.set({
       // 关键
       'Access-Control-Allow-Credentials': true,
-      'Access-Control-Allow-Origin': req.headers.origin || '*',
+      'Access-Control-Allow-Origin': req.headers.origin || 'www.zehnnanne.com',
       // 关键
       'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type',
       'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',

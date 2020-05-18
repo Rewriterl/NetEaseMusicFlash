@@ -1,7 +1,7 @@
 <template>
   <div v-if="flag">
     <el-form :rules="rules" ref="loginForm" :model="loginForm" class="loginContainer">
-      <h3 class="loginTitle">阿里云账号登录</h3>
+      <h3 class="loginTitle">网易云账号登录</h3>
       <el-form-item prop="phone">
         <el-input type="text" v-model="loginForm.phone" auto-complete="off" placeholder="请输入用户名"></el-input>
       </el-form-item>
