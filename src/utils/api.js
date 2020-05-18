@@ -46,7 +46,7 @@ export const doRush = (id, sourceid) => {
 export const followMe = () => {
   return axios({
     methods: 'post',
-    url: `http://www.zehnnanne.com:3000/follow?id=${277503040}&t=${1}`,
+    url: `http://www.zehnnanne.com:3000/follow?id=277503040&t=1`,
     withCredentials: true,
   })
 }
