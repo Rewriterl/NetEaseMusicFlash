@@ -73,14 +73,14 @@
                       message: value.data.msg,
                       type: 'error'
                     })
-                  } else if (value.code === 400) {
-                    this.$message({
-                      showClose: true,
-                      message: '错误的账户信息',
-                      type: 'error'
-                    })
                   }
+                }).catch(
+                this.$message({
+                  showClose: true,
+                  message: '错误的账户信息',
+                  type: 'error'
                 })
+              )
             } else {
               this.$message.error('请输入所有字段')
               return false
