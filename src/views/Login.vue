@@ -81,7 +81,13 @@
                       type: 'error'
                     })
                   }
+                }).catch(
+                this.$message({
+                  showClose: true,
+                  message: '网络异常',
+                  type: 'error'
                 })
+              )
             } else {
               this.$message.error('请输入所有字段')
               return false
