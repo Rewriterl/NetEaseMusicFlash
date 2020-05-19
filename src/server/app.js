@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const https = require('https')
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('../utils/request')
@@ -78,8 +79,18 @@ fs.readdirSync(path.join(__dirname, '')).reverse().forEach(file => {
 
 const port = process.env.PORT || 3000
 const host = process.env.HOST || ''
+const options = {
+  key: fs.readFileSync('自己的证书位置'),
+  cert: fs.readFileSync('自己的证书位置'),
+  requestCert: false,
+  rejectUnauthorized: false
+};
 
-app.server = app.listen(port, host, () => {
+// app.server = app.listen(port, host, () => {
+//   console.log(`server running @ http://${host ? host : 'localhost'}:${port}`)
+// })
+
+app.server = https.createServer(options, app).listen(port, host, () => {
   console.log(`server running @ http://${host ? host : 'localhost'}:${port}`)
 })
 
